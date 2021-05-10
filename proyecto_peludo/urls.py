@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static #importamos el uso de firectorios estaticos
+from django.conf import settings # importar el archivo setting del proyecto
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('app_ong.urls')),
 ]
+# incluir en PATH la ubicacion de los directorios media
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

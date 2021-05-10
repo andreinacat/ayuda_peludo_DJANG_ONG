@@ -7,7 +7,7 @@
 {% endblock css %}
 {% block body %}
     <body id="cuerpo" style=" background-color: rbga(255,255,255,0.9);background-blend-mode: overlay;">
-    <form class="form-registro" action="{% url 'REG'%}" method="POST">
+    <form class="form-registro" enctype="multipart/form-data" action="{% url 'REG'%}" method="POST">
         {% csrf_token %}
         <h2 class="form-titulo">Ingresar nueva Mascota</h2>
 
