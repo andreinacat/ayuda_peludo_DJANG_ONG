@@ -7,22 +7,43 @@
 {% endblock css %}
 {% block body %}
     <body id="cuerpo" style=" background-color: rbga(255,255,255,0.9);background-blend-mode: overlay;">
+    <div align=right><a href="{% url 'IND'%}"> inicio></a></div>
     <form class="form-registro" enctype="multipart/form-data" action="{% url 'REG'%}" method="POST">
         {% csrf_token %}
-        <h2 class="form-titulo">Ingresar nueva Mascota</h2>
+       
 
-        <div>
-            <input class="col-sm" type="text" name="txtNombre" id="txtNombre" placeholder="nombre" required>
-            <input type="number" name="txtEdad" id="txtEdad" required>
-            <textarea name="txtDesc" id="txtDesc" cols="30" rows="10"></textarea>
-            <input class="col-xl" type="file" name="txtImg" id="txtImg">
-            <select name="cboCategoria" id="cboCategoria">
+        <div class="container-md" style="margin-top: 50px;background-color:rgb(188, 250, 231);">
+            <div class=" row justify-content-center">
+                <h2 class="form-titulo" style="text-align: center;">Ingresar nueva Mascota</h2>
+            </div>
+            <div class="row justify-content-center" style="margin-top: 30px;"> 
+                <input class="col-4" type="text" name="txtNombre" id="txtNombre" placeholder="nombre" required>
+            <div class="row justify-content-center" style="margin-top: 20px;">
+                <textarea class="col-4" name="txtDesc" id="txtDesc" cols="30" rows="10" placeholder="descripcion"></textarea>
+            </div>   
+            
+            </div>
+            <div class="row justify-content-center" style="margin-top: 20px;">
+                <input class="col-4" type="number" name="txtEdad" id="txtEdad" placeholder="edad" required>
+            </div>
+            <div class="row justify-content-center" style="margin-top: 20px;">    
+                <input class="col-5" type="file" name="txtImg" id="txtImg">
+            </div> 
+            <div class="row justify-content-center" style="margin-top: 20px;">   
+                <select class="col-4" name="cboCategoria" id="cboCategoria">
                 {% for item in categorias %}
                     <option >{{item.nombre}}</option>
                 {% endfor %}
                 
-            </select>
-            <input class="btn-registrar" type="submit" value="Registrar">
+                </select>
+            </div>
+            <div class="row justify-content-center" style="margin-top: 20px;">
+
+                <input class="col-2" type="submit" value="Registrar">
+            </div>
+          
+            
+        
         </div>
 
 

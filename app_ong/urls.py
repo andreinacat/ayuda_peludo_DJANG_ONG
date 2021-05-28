@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import index,gatitos, perritos, registro, ficha, filtro_categoria, filtro_descripcion
+from .views import index,gatitos, perritos, registro, ficha, filtro_categoria, filtro_descripcion,animalitos
 
 urlpatterns = [
     
@@ -11,5 +11,6 @@ urlpatterns = [
     path('registro/',registro,name='REG'),
     path('ficha/<id>/',ficha,name='FICHA'),
     path('filtro_c/',filtro_categoria,name='FILTROC'),
+    path('todos/',animalitos,name='TODOS'),
     
 ]

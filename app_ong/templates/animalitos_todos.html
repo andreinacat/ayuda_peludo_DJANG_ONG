@@ -8,15 +8,13 @@
 {% block body %}
 <body style="background-image: url({% static 'img/tapiz4.jpg'%}); background-color: rbga(255,255,255,0.9);background-blend-mode: overlay;">
     <div align=right><a href="{% url 'IND'%}"> inicio></a></div>
-     <div>
+    <div>
     <img src="{% static 'img/paw2.gif' %}" alt="" style="fill-opacity: 150;height: 70px; width: 400px;" >
     <img src="{% static 'img/paw2.gif' %}" alt="" style="fill-opacity: 150;height: 70px;width: 420px;" >
     <img src="{% static 'img/paw2.gif' %}" alt="" style="fill-opacity: 150;height: 70px;width: 400px;" align="right" >
     </div>
-    
-  
    
-    <div><h1><p align=center style="font-size: 40px;">PERROS EN ADOPCION</p></h1></div>
+    <div><h1><p align=center style="font-size: 40px;">ANIMALITOS EN ADOPCION</p></h1></div>
     <p style="text-align: justify ;margin: 50px;"> Lorem ipsum dolor sit amet consectetur adipisicing 
                                                 elit. Porro distinctio blanditiis perspiciatis soluta
                                                  ad tenetur sit placeat nostrum. Dolores harum esse, 
@@ -32,13 +30,29 @@
                                                    ad tenetur sit placeat nostrum. Dolores harum esse, 
                                                    culpa deserunt neque nam repellendus ab! Repellat, 
                                                    nobis possimus?</p>
-    <h2 style="text-align: center; margin: 50px;">Nuestros Perros que buscan familia: </h2>
+    <h2 style="text-align: center; margin: 50px;">Nuestros animalitos que buscan familia: </h2>
     
-    
+    <form action="{% url 'FILTROC'%}" method="POST">
+    {% csrf_token %}
+        Filtro por categorias:
+        <select name="cboCategoria" id="cboCategoria">
+        {% for reg in categorias  %}
+            <option>{{reg.nombre}}</option>
+        {% endfor %}
+        </select>
+        <input type="submit" value="filtrar">
+    </form>
+
+     <form action="{% url 'FILTROD'%}" method="POST">
+    {% csrf_token %}
+        Filtro por descripcion:
+        <input type="text" name="txtDesc" id="txtDesc">
+        <input type="submit" value="filtrar">
+    </form>
     <table style="width: 500px; text-align: center; margin-bottom: 50px ;">
     <div style="text-align: center; color: aqua; font-size: xx-large;">{{cantidad}}</div>
     {% for item in mascotas %}
-        <tr>
+         <tr>
             <td><img src="{{item.imagen.url}}" alt="" width="50%" style="border-radius: 80px;"></td>
             <td><p style="text-align: center;font-size: 34px;">{{item.nombre}}</p></td>
             <td><a href="{% url 'FICHA' item.nombre %}"><p style="text-align: center;font-size: 15px;">ver ficha</p></a></td>
@@ -49,19 +63,22 @@
         
         
     </table>
-       
+        
+    </table>
     <div>
     <img src="{% static 'img/paw2.gif' %}" alt="" style="fill-opacity: 150;height: 70px; width: 400px;" >
     <img src="{% static 'img/paw2.gif' %}" alt="" style="fill-opacity: 150;height: 70px;width: 420px;" >
     <img src="{% static 'img/paw2.gif' %}" alt="" style="fill-opacity: 150;height: 70px;width: 400px;" align="right" >
     </div>
-    
      
+   
+   
 </body>
    
 {% endblock body %}
 {% block footer %}
 
+  
 
 {% endblock footer %}
 

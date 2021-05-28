@@ -10,12 +10,7 @@ def index(request):
     return render(request, 'index.html', contexto)
 
     
-    
-def perritos(request):
-    masco = Mascota.objects.all()
-    categorias = Categoria.objects.all()
-    contexto ={"mascotas":masco,"categorias": categorias}
-    return render(request, 'perritos.html',contexto)
+
 
 def filtro_categoria(request):
     masco = Mascota.objects.all()
@@ -26,7 +21,7 @@ def filtro_categoria(request):
         masco = Mascota.objects.filter(categoria__pk=cate)
         cant= Mascota.objects.filter(categoria__pk=cate).count()
     contexto ={"mascotas":masco,"categorias": categorias,"cantidad":cant}
-    return render(request, 'perritos.html',contexto)
+    return render(request, 'animalitos_todos.html',contexto)
 
 
 def filtro_descripcion(request):
@@ -38,10 +33,34 @@ def filtro_descripcion(request):
         masco = Mascota.objects.filter(descripcion__contains=texto)
         cant = Mascota.objects.filter(descripcion__contains=texto).count()
     contexto ={"mascotas":masco,"categorias": categorias,"cantidad":cant}
-    return render(request, 'perritos.html',contexto)
+    return render(request, 'animalitos_todos.html',contexto)
 
 def gatitos(request):
-    return render(request, 'gatitos.html')
+    masco = Mascota.objects.all()
+    categorias = Categoria.objects.all()
+    cate = 'gatos'
+    masco = Mascota.objects.filter(categoria__pk=cate)     
+    cant= Mascota.objects.filter(categoria__pk=cate).count()
+    contexto ={"mascotas":masco,"categorias": categorias,"cantidad":cant}
+
+    return render(request, 'gatitos.html',contexto)
+
+def perritos(request):
+    masco = Mascota.objects.all()
+    categorias = Categoria.objects.all()
+    cate = 'perros'
+    masco = Mascota.objects.filter(categoria__pk=cate)     
+    cant= Mascota.objects.filter(categoria__pk=cate).count()
+    contexto ={"mascotas":masco,"categorias": categorias,"cantidad":cant}
+
+    return render(request, 'perritos.html',contexto)
+
+def animalitos(request):
+    masco = Mascota.objects.all()
+    categorias = Categoria.objects.all()
+    contexto ={"mascotas":masco,"categorias": categorias}
+    return render(request, 'animalitos_todos.html',contexto)
+
 
 def ficha(request, id):
     mascota= Mascota.objects.get(nombre=id)

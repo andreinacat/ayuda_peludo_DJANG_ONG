@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 {% endblock css %}
 {% block body %}
-    <body id="cuerpo" style=" background-color: rbga(255,255,255,0.9);background-blend-mode: overlay;">
+    <body style="background-image: url({% static 'img/tapiz4.jpg'%}); background-color: rbga(255,255,255,0.9);background-blend-mode: overlay;">
     <div>
         <img src="{% static 'img/paw2.gif' %}" alt="" style="fill-opacity: 150;height: 70px; width: 400px;" >
         <img src="{% static 'img/paw2.gif' %}" alt="" style="fill-opacity: 150;height: 70px;width: 420px;" >
@@ -35,10 +35,7 @@
         <li>Felipe guglielmucci: Veterinario experto en {{animalitos.0}} </li>
         <li>Camila Gallardo: Directora ONG y Activista dueña de {{mascota.nombre}} de edad {{mascota.edad}}</li>
         <li>Pablo Cifuentes: Gestion de organizacion y recursos</li>
-        {%for x in animalitos %}
-        <li> {{x}}
-        </li>
-        {%endfor%}
+       
     </ul>
     <h2 style="text-align: center;font-size: larger; margin: 50px;">Nuestras secciones de ayuda: </h2>
     
@@ -50,6 +47,10 @@
         <tr>
             <td><img src="{% static 'img/fotomural-gatitos-con-botas.jpg'%}" alt="" width="50%" style="border-radius: 80px;"></td>
             <td><a href="{% url 'gatos' %}"> <p style="text-align: center;">GATITOS</p></a></td>
+        </tr>
+        <tr>
+            <td><img src="{% static 'img/todos.jpeg'%}" alt="" width="50%" style="border-radius: 80px;"></td>
+            <td><a href="{% url 'TODOS' %}"> <p style="text-align: center;">TODAS LAS MASCOTAS</p></a></td>
         </tr>
         <tr>
             <td><a href="{% url 'REG'%}"><p>registrar nueva mascota</p></a></td>
